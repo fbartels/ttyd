@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# script to mimic the behaviour of wetty
+# TODO figure out url arguments
+
 set -eu
 
 HOST=${HOST:-localhost}
