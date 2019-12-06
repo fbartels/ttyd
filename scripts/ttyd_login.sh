@@ -1,12 +1,13 @@
 #!/bin/sh
 
 # script to mimic the behaviour of wetty
-# TODO figure out url arguments
+# to specify a different host and port call ttyd in the following way:
+# http://localhost:7681?arg=servername&arg=2200
 
 set -eu
 
-HOST=${HOST:-localhost}
-PORT=${PORT:-22}
+HOST=${1:-localhost}
+PORT=${2:-22}
 
 echo -n "Enter your username: "
 read -r username
@@ -15,4 +16,4 @@ if [ -z "${username:-}" ]; then
 	exit 1
 fi
 
-ssh -p"${PORT}" -l"${username}" "${HOST}"
+ssh -oControlMaster=no -p"${PORT}" -l"${username}" "${HOST}"
